@@ -9,7 +9,7 @@ interface Props {
   gameQeury: GameQuery;
 }
 
-export default function GameGrid({gameQeury}: Props) {
+export default function GameGrid({ gameQeury }: Props) {
   const { data, error, isLoading } = useGames(gameQeury);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -23,7 +23,7 @@ export default function GameGrid({gameQeury}: Props) {
           lg: 3,
           xl: 4,
         }}
-        spacing={3}
+        spacing={6}
         padding="10px"
       >
         {isLoading &&

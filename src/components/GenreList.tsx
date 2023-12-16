@@ -27,28 +27,31 @@ export default function GenreList({ onSelectGenre, selectedGenre }: Props) {
         Genre
       </Heading>
       <List>
-        {data.map((genre) => (
-          <ListItem key={genre.id} paddingY="5px">
-            <HStack>
-              <Image
-                boxSize="32px"
-                borderRadius={8}
-                objectFit="cover"
-                src={getCroppedImageUrl(genre.image_background)}
-              />
-              <Button
-                onClick={() => onSelectGenre(genre)}
-                fontSize="lg"
-                variant="link"
-                fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'normal'}
-                whiteSpace="normal"
-                textAlign="left"
-              >
-                {genre.name}
-              </Button>
-            </HStack>
-          </ListItem>
-        ))}
+        {data &&
+          data.results.map((genre) => (
+            <ListItem key={genre.id} paddingY="5px">
+              <HStack>
+                <Image
+                  boxSize="32px"
+                  borderRadius={8}
+                  objectFit="cover"
+                  src={getCroppedImageUrl(genre.image_background)}
+                />
+                <Button
+                  onClick={() => onSelectGenre(genre)}
+                  fontSize="lg"
+                  variant="link"
+                  fontWeight={
+                    selectedGenre?.id === genre.id ? 'bold' : 'normal'
+                  }
+                  whiteSpace="normal"
+                  textAlign="left"
+                >
+                  {genre.name}
+                </Button>
+              </HStack>
+            </ListItem>
+          ))}
       </List>
     </>
   );

@@ -4,16 +4,13 @@ import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
-import { GameQuery } from '../App';
 import React from 'react';
+import useGameQueryStore from '../store';
 
-interface Props {
-  gameQeury: GameQuery;
-}
-
-export default function GameGrid({ gameQeury }: Props) {
+export default function GameGrid() {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   const { data, error, isLoading, fetchNextPage, hasNextPage } =
-    useGames(gameQeury);
+    useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const fetchedGameCount =

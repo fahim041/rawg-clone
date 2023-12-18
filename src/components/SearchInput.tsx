@@ -7,19 +7,17 @@ import {
 } from '@chakra-ui/react';
 import { BsSearch } from 'react-icons/bs';
 import { MdOutlineClose } from 'react-icons/md';
+import useGameQueryStore from '../store';
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-export default function SearchInput({ onSearch }: Props) {
+export default function SearchInput() {
   const [search, setSearch] = useState('');
+  const setSearchText = useGameQueryStore((s) => s.setSearchText);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSearch(search);
+        setSearchText(search);
       }}
     >
       <InputGroup>
@@ -36,7 +34,7 @@ export default function SearchInput({ onSearch }: Props) {
             cursor="pointer"
             onClick={() => {
               setSearch('');
-              onSearch('');
+              setSearchText('');
             }}
             children={<MdOutlineClose />}
           />

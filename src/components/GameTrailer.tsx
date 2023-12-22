@@ -18,8 +18,6 @@ const GameTrailer = ({ gameId }: Props) => {
       controls
     ></video>
   );
-
-  return <div>Game Trailer</div>;
 };
 
 export default GameTrailer;

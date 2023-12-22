@@ -8,8 +8,10 @@ import {
 import { BsSearch } from 'react-icons/bs';
 import { MdOutlineClose } from 'react-icons/md';
 import useGameQueryStore from '../store';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchInput() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
 
@@ -18,6 +20,7 @@ export default function SearchInput() {
       onSubmit={(e) => {
         e.preventDefault();
         setSearchText(search);
+        navigate('/');
       }}
     >
       <InputGroup>

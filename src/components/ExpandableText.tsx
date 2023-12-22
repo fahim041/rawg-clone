@@ -19,7 +19,7 @@ const ExpandableText = ({ children }: Props) => {
     <Text>
       {summary}
       <Button
-        marginLeft={2}
+        marginLeft={1}
         size="xs"
         colorScheme="yellow"
         onClick={() => setExpanded(!expanded)}

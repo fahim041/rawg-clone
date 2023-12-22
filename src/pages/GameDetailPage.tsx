@@ -5,10 +5,18 @@ import GameAttributes from '../components/GameAttributes';
 import useGame from '../hooks/useGame';
 import GameTrailer from '../components/GameTrailer';
 import GameScreenshots from '../components/GameScreenshots';
+import useTrailers from '../hooks/useTrailers';
 
 const GameDetailPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, isError } = useGame(slug!);
+  const {
+    data: trailer,
+    isLoading: trailerLoading,
+    isError: trailerError,
+  } = useTrailers(game?.id!);
+
+  const trailerData = trailer?.results[0];
 
   if (isLoading) return <Spinner />;
 
@@ -23,10 +31,18 @@ const GameDetailPage = () => {
           <GameAttributes game={game} />
         </GridItem>
         <GridItem>
-          <GameTrailer gameId={game.id} />
+          {trailerData ? (
+            <GameTrailer
+              trailer={trailer?.results[0]}
+              error={trailerError}
+              isLoading={trailerLoading}
+            />
+          ) : (
+            <GameScreenshots gameId={game.id} />
+          )}
         </GridItem>
       </SimpleGrid>
-      <GameScreenshots gameId={game.id} />
+      {trailerData && <GameScreenshots gameId={game.id} />}
     </>
   );
 };

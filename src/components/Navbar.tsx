@@ -8,7 +8,11 @@ export default function Navbar() {
   return (
     <HStack justifyContent="space-between" padding="10px">
       <Link to="/">
-        <Image src={logo} boxSize="60px" objectFit="cover" />
+        <Image
+          src={logo}
+          boxSize={{ base: '50px', lg: '60px' }}
+          objectFit="cover"
+        />
       </Link>
       <SearchInput />
       <ThemeSwitch />

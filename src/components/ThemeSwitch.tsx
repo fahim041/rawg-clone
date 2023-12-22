@@ -10,7 +10,7 @@ export default function ThemeSwitch() {
         isChecked={colorMode === 'dark'}
         onChange={toggleColorMode}
       />
-      <Text whiteSpace='nowrap'>Dark Mode</Text>
+      <Text whiteSpace="nowrap">Dark</Text>
     </HStack>
   );
 }

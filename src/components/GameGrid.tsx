@@ -19,7 +19,7 @@ export default function GameGrid() {
   if (error) return <Text>{error.message}</Text>;
 
   return (
-    <Box padding="10px">
+    <Box paddingY="10px">
       <InfiniteScroll
         dataLength={fetchedGameCount}
         hasMore={hasNextPage}
